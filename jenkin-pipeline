@@ -14,7 +14,7 @@ pipeline{
        }
        stage("Deploy"){
             steps{
-               sh '''scp root@192.168.0.51:/usr/local/apache-tomcat-10.0.16/webapps/
+               sh '''scp -P 22 root@192.168.0.51:/usr/local/apache-tomcat-10.0.16/webapps/
                      ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/shutdown.sh
                      shh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/startup.sh
                   ''' 
