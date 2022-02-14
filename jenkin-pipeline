@@ -13,13 +13,15 @@ pipeline{
             }     
        }
        stage("Deploy"){
-            sshagent(['tomcat']) {
-            sh """
+            steps{
+              sshagent(['tomcat']) {
+               sh """
                scp -o StrictHostKeyChecking=no target/myweb.war root@192.168.0.51:/usr/local/apache-tomcat-10.0.16/webapps
                ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/stutdown.sh
                ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/startup.sh
-             """  
-            }      
+               """  
+            }    
+            }
        }
     }
 }
