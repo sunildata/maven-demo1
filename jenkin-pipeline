@@ -14,9 +14,9 @@ pipeline{
        }
        stage("Deploy"){
             steps{
-                    sh "scp ssh -o StrictHostKeyChecking=no target/myweb.war root@192.168.0.51:/usr/local/apache-tomcat-10.0.16/webapps/"
-                    sh "ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/shutdown.sh"
-                    sh "ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/startup.sh"          
+                    sh "scp target/myweb.war /usr/local/apache-tomcat-10.0.16/webapps/"
+                    sh "/usr/local/apache-tomcat-10.0.16/bin/shutdown.sh"
+                    sh "/usr/local/apache-tomcat-10.0.16/bin/startup.sh"          
             }
        }
     }
