@@ -15,12 +15,12 @@ pipeline{
        stage("Deploy"){
             steps{
                sshagent(['tomcat']) {
-                 sh '''
+                    sh '''
                      scp target/myweb.war root@192.168.0.51:/usr/local/apache-tomcat-10.0.16/webapps/
                      ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/shutdown.sh
                      shh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/startup.sh
                    ''' 
-               }
+               }            
             }
        }
     }
