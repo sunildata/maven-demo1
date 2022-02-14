@@ -14,7 +14,7 @@ pipeline{
        }
        stage("Deploy"){
             steps{
-                    sh "scp target/myweb.war /usr/local/apache-tomcat-10.0.16/webapps/"
+                    sh "cp target/myweb.war /usr/local/apache-tomcat-10.0.16/webapps/"
                     sh "/usr/local/apache-tomcat-10.0.16/bin/shutdown.sh"
                     sh "/usr/local/apache-tomcat-10.0.16/bin/startup.sh"          
             }
