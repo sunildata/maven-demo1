@@ -7,4 +7,4 @@ pipeline{
             }
         }
     }
-}git branch: 'main', credentialsId: 'git-cread', url: 'https://github.com/sunildata/maven-demo1.git'
+}
