@@ -15,12 +15,12 @@ pipeline{
        stage("Deploy"){
             steps{
               sshagent(['tomcat1']) {
-               sh """
-               scp -o StrictHostKeyChecking=no target/myweb2.war root@192.168.0.51:/usr/local/apache-tomcat-10.0.16/webapps
-               ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/stutdown.sh
-               ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/startup.sh
-               """  
-            }    
+              sh """
+                 scp -o StrictHostKeyChecking=no target/myweb2.war root@192.168.0.51:/usr/local/apache-tomcat-10.0.16/webapps/
+                 ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/shutdown.sh
+                 ssh root@192.168.0.51 /usr/local/apache-tomcat-10.0.16/bin/startup.sh
+              """  
+           }    
             }
        }
     }
