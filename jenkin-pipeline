@@ -6,7 +6,7 @@ pipeline{
                 git branch: 'main', credentialsId: 'git-cread', url: 'https://github.com/sunildata/maven-demo1.git'
             }     
        }
-       stage("git cloning"){
+       stage("mvn build"){
             steps{
                 sh 'mvn clean package'
             }     
